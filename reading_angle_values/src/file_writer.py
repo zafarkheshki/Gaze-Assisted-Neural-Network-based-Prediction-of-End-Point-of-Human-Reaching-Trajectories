@@ -14,7 +14,7 @@ def joint_state_callback(msg):
     global record
     global writing
     if record:
-        with open ('/home/zafar/zafar-rtech/src/reading_angle_values/joint_angles.txt', 'a+') as text_file:
+        with open ('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/joint_angles.txt', 'a+') as text_file:
             print('Writing to file')
             if not writing:
                 writing = True
