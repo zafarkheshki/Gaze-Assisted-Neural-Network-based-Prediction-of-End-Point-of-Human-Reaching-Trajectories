@@ -17,32 +17,29 @@ def optim_ik_UR5(theta_init, x_e, y_e, z_e, R_e, theta_min, theta_max):
 
 	def cost_theta(q):
 
-		alpha1 = 0.0
-		alpha2 = -np.pi/2
-		alpha3 = np.pi/2
+		alpha1 = np.pi/2
+		alpha2 = 0
+		alpha3 = 0
 		alpha4 = np.pi/2
 		alpha5 = -np.pi/2
-		alpha6 = np.pi/2
-		alpha7 = np.pi/2
-		alpha8 = 0.0
+		alpha6 = 0
+		
 
-		d1 = 0.330
+		d1 = 0.089159
 		d2 = 0.0
-		d3 = 0.3160
-		d4 = 0.0
-		d5 = 0.3840
-		d6 = 0.0
-		d7 = 0.0
-		d8 = 0.1070
+		d3 = 0.0
+		d4 = 0.10915
+		d5 = 0.09465
+		d6 = 0.0823
+		
 
 		a1 = 0.0
-		a2 = 0.0
-		a3 = 0.0
-		a4 = 0.0825
-		a5 = -0.0825
+		a2 = -0.425
+		a3 = -0.39225
+		a4 = 0.0
+		a5 = 0.0
 		a6 = 0.0
-		a7 = 0.0880
-		a8 = 0.0
+		
 
 		q1 = q[0]
 		q2 = q[1]
@@ -50,9 +47,7 @@ def optim_ik_UR5(theta_init, x_e, y_e, z_e, R_e, theta_min, theta_max):
 		q4 = q[3]
 		q5 = q[4]
 		q6 = q[5]
-		q7 = q[6]
-		q8 = 0.0
-
+		
 
 
 		T1 = np.array([ [np.cos(q1), -np.sin(q1), 0.0, a1  ], [ np.sin(q1)*np.cos(alpha1), np.cos(q1)*np.cos(alpha1), -np.sin(alpha1), -d1*np.sin(alpha1)  ], [ np.sin(q1)*np.sin(alpha1), np.cos(q1)*np.sin(alpha1), np.cos(alpha1), d1*np.cos(alpha1)   ], [0.0, 0.0, 0.0, 1.0 ]   ])
@@ -67,9 +62,9 @@ def optim_ik_UR5(theta_init, x_e, y_e, z_e, R_e, theta_min, theta_max):
 
 		T6 = np.array([ [np.cos(q6), -np.sin(q6), 0.0, a6  ], [ np.sin(q6)*np.cos(alpha6), np.cos(q6)*np.cos(alpha6), -np.sin(alpha6), -d6*np.sin(alpha6)  ], [ np.sin(q6)*np.sin(alpha6), np.cos(q6)*np.sin(alpha6), np.cos(alpha6), d6*np.cos(alpha6)   ], [0.0, 0.0, 0.0, 1.0 ]   ])
 
-		T7 = np.array([ [np.cos(q7), -np.sin(q7), 0.0, a7  ], [ np.sin(q7)*np.cos(alpha7), np.cos(q7)*np.cos(alpha7), -np.sin(alpha7), -d7*np.sin(alpha7)  ], [ np.sin(q7)*np.sin(alpha7), np.cos(q7)*np.sin(alpha7), np.cos(alpha7), d7*np.cos(alpha7)   ], [0.0, 0.0, 0.0, 1.0 ]   ])
+		#T7 = np.array([ [np.cos(q7), -np.sin(q7), 0.0, a7  ], [ np.sin(q7)*np.cos(alpha7), np.cos(q7)*np.cos(alpha7), -np.sin(alpha7), -d7*np.sin(alpha7)  ], [ np.sin(q7)*np.sin(alpha7), np.cos(q7)*np.sin(alpha7), np.cos(alpha7), d7*np.cos(alpha7)   ], [0.0, 0.0, 0.0, 1.0 ]   ])
 
-		T8 = np.array([ [np.cos(q8), -np.sin(q8), 0.0, a8  ], [ np.sin(q8)*np.cos(alpha8), np.cos(q8)*np.cos(alpha8), -np.sin(alpha8), -d8*np.sin(alpha8)  ], [ np.sin(q8)*np.sin(alpha8), np.cos(q8)*np.sin(alpha8), np.cos(alpha8), d8*np.cos(alpha8)   ], [0.0, 0.0, 0.0, 1.0 ]   ])
+		#T8 = np.array([ [np.cos(q8), -np.sin(q8), 0.0, a8  ], [ np.sin(q8)*np.cos(alpha8), np.cos(q8)*np.cos(alpha8), -np.sin(alpha8), -d8*np.sin(alpha8)  ], [ np.sin(q8)*np.sin(alpha8), np.cos(q8)*np.sin(alpha8), np.cos(alpha8), d8*np.cos(alpha8)   ], [0.0, 0.0, 0.0, 1.0 ]   ])
 
 
 
