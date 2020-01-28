@@ -1,26 +1,46 @@
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 
 xfile = open('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/ar_tracker_pose.txt')
-line = xfile.readline()
+lines = xfile.readline()
 counter = 3
+x = []
+y = []
+z = []
 
-while line:
-    if line.strip() == 'position:':
-        line = xfile.readline()
+while lines:
+    if lines.strip() == 'position:':
+        lines = xfile.readline()
     if counter == 0:
-        line = xfile.readline()
-        line = xfile.readline()
-        line = xfile.readline()
-        line = xfile.readline()
-        line = xfile.readline()
+        lines = xfile.readline()
+        lines = xfile.readline()
+        lines = xfile.readline()
+        lines = xfile.readline()
+        lines = xfile.readline()
         counter = 3
         continue
 
-    with open ('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/ar_coordinates.txt', 'a+') as text_file:
-        text_file.write(line)
-
-    print (line)
-    line = xfile.readline()
+    
+    wds = lines.split()
+    if wds[0] == 'x:':
+        x.append(float(wds[1]))
+    if wds[0] == 'y:':
+        y.append(float(wds[1]))
+    if wds[0] == 'z:':
+        z.append(float(wds[1]))
+    
+    lines = xfile.readline()
     counter = counter - 1
 
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+# print(x)
+# ax.scatter(x, y, z, c='r', marker='o')
+ax.plot(x, y, z, c='r')
 
+ax.set_xlabel('X Label')
+ax.set_ylabel('Y Label')
+ax.set_zlabel('Z Label')
+
+plt.show()
 

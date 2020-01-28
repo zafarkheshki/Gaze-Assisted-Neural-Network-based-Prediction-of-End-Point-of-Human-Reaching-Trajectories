@@ -10,16 +10,16 @@ z = []
 for line in xfile:
     line = line.rstrip()
     wds = line.split()
-    if wds[0] == 'x' and wds[1] != 'nan':
+    if wds[0] == 'x:':
         x.append(float(wds[1]))
-    if wds[0] == 'y' and wds[1] != 'nan':
+    if wds[0] == 'y:':
         y.append(float(wds[1]))
-    if wds[0] == 'z' and wds[1] != 'nan':
+    if wds[0] == 'z:':
         z.append(float(wds[1]))
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-
+print(x)
 ax.scatter(x, y, z, c='r', marker='o')
 
 ax.set_xlabel('X Label')
