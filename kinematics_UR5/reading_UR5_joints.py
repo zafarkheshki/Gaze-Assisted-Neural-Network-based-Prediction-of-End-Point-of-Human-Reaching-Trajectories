@@ -3,7 +3,7 @@
 from numpy import *
 from scipy.io import loadmat
 import matplotlib.pyplot as plt
-import forward_kinem_franka_lecture
+import forward_kinem_UR5
 
 theta_temp = loadmat('theta_franka_lecture.mat')
 theta = theta_temp['theta']

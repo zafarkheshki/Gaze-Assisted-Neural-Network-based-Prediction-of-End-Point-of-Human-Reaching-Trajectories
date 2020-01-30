@@ -70,13 +70,12 @@ def optim_ik_UR5(theta_init, x_e, y_e, z_e, R_e, theta_min, theta_max):
 
 		# T_fin = T1.dot(T2).dot(T3).dot(T4).dot(T5).dot(T6).dot(T7).dot(T8)
 
-		temp1 = np.dot(T7, T8)
-		temp2 = np.dot(T6, temp1)
-		temp3 = np.dot(T5, temp2)
-		temp4 = np.dot(T4, temp3)
-		temp5 = np.dot(T3, temp4)
-		temp6 = np.dot(T2, temp5)
-		T_fin = np.dot(T1, temp6)
+		temp1 = np.dot(T5, T6)
+		temp2 = np.dot(T4, temp1)
+		temp3 = np.dot(T3, temp2)
+		temp4 = np.dot(T2, temp3)
+		T_fin = np.dot(T1, temp4)
+		
 		
 		
 		R1 = T1[0:3, 0:3]
@@ -85,7 +84,6 @@ def optim_ik_UR5(theta_init, x_e, y_e, z_e, R_e, theta_min, theta_max):
 		R4 = T4[0:3, 0:3]
 		R5 = T5[0:3, 0:3]
 		R6 = T6[0:3, 0:3]
-		R7 = T7[0:3, 0:3]
 
 		
 		
@@ -111,9 +109,9 @@ def optim_ik_UR5(theta_init, x_e, y_e, z_e, R_e, theta_min, theta_max):
 
 		
 
-		f = np.linalg.norm(q-theta_init)
+		f = np.dot((q-theta_init).T, (q-theta_init))
 
-		cost = (vec_x-x_e)**2+(vec_y-y_e)**2+(vec_z-z_e)**2+(tr-tr_actual)**2+(ax1-ax1_actual)**2+(ax2-ax2_actual)**2+(ax3-ax3_actual)**2
+		cost = 100*(vec_x-x_e)**2+100*(vec_y-y_e)**2+100*(vec_z-z_e)**2+(tr-tr_actual)**2+(ax1-ax1_actual)**2+(ax2-ax2_actual)**2+(ax3-ax3_actual)**2+0.01*f
 
 		return cost
 
