@@ -2,14 +2,16 @@
 
 from numpy import *
 import matplotlib.pyplot as plt 
+from mpl_toolkits.mplot3d import Axes3D
 import forward_kinem_UR5
 import optim_ik_UR5
 from transforms3d import *
 import time
+import csv
 
 
 
-my_data = genfromtxt('end_pos_pose.csv', delimiter = ',')
+my_data = genfromtxt('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/ar_tracker_pose.csv', delimiter = ',')
 
 # XYZ positions of end effector
 x_end = my_data[:,0] 
@@ -57,13 +59,11 @@ for i in range(len(my_data)):
 	start = time.time()
 	theta_compute = optim_ik_UR5.optim_ik_UR5(theta_init, x_e_actual, y_e_actual, z_e_actual, R_e_actual, theta_min, theta_max)
 	q.append(theta_compute)
-	print q
+	print(q)
 	
-	with open('q_computed.csv', mode='w') as joint_angles:
+	with open('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/q_computed.csv', mode='w') as joint_angles:		
 		joint_angles = csv.writer(joint_angles, delimiter=',')
-	        joint_angles.writerows(q)
-
-
+		joint_angles.writerows(q)
 	theta_init = theta_compute
 	
 
@@ -74,16 +74,17 @@ for i in range(len(my_data)):
 	euler_compute = euler.mat2euler(R_e_compute, 'sxyz')
 
 
-	x_e_compute_i.append(x_e_compute)
-	y_e_compute_i.append(y_e_compute)
-	z_e_compute_i.append(z_e_compute)
+	x_e_compute_array.append(x_e_compute)
+	y_e_compute_array.append(y_e_compute)
+	z_e_compute_array.append(z_e_compute)
+
 	
 	
 
 fig = plt.figure()
 ax = fig.gca(projection='3d')
 ax.plot(x_end, y_end, z_end, label='desired parametric curve')
-ax.plot(x_e_compute_i, y_e_compute_i, z_e_compute_i, label='parametric curve')
+ax.plot(x_e_compute_array, y_e_compute_array, z_e_compute_array, label='parametric curve')
 ax.legend()
 plt.show()
 

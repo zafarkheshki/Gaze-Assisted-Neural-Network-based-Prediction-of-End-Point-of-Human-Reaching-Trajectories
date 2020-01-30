@@ -1,6 +1,7 @@
 
 
 from numpy import *
+import numpy as np
 
 def forward_kinem_UR5(q):
 
