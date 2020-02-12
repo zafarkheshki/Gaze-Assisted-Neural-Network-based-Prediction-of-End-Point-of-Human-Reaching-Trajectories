@@ -16,13 +16,13 @@ from actionlib_msgs.msg import GoalStatusArray
 import os
 
 def joint_angle_values():
-    with open ('/home/zafar/zafar-rtech/src/reading_angle_values/joint_angles.txt') as fp:
+    with open ('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/joint_angles_new1.txt') as fp:
         num_lines = len(fp.readlines())
         num_joints = 6
         arm_joints = np.ones((num_lines, num_joints))
         # print arm_joints
         fp.close()
-    with open ('/home/zafar/zafar-rtech/src/reading_angle_values/joint_angles.txt') as fp1:    
+    with open ('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/joint_angles_new1.txt') as fp1:    
     
         for i in range(num_lines):
             line = fp1.readline()
@@ -49,7 +49,7 @@ for i in range (arm_joints.shape[0]):
     joint_goal[4] = arm_joints[i,4]
     joint_goal[5] = arm_joints[i,5]
     group.go(joint_goal, wait=True)
-    with open ('/home/zafar/zafar-rtech/src/reading_angle_values/end_effector_coordinates.txt', 'a+') as text_file:
+    with open ('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/end_effector_coordinates.txt', 'a+') as text_file:
         pose = group.get_current_pose().pose
         print pose
         # print ("After Pose")
@@ -57,16 +57,16 @@ for i in range (arm_joints.shape[0]):
         text_file.write(str(pose))
         text_file.write('\n')
             
-    cam = cv2.VideoCapture(1)
-    retval, frame = cam.read()
-    if retval != True:
-        raise ValueError("Can't read frame")
-    cv2.imwrite('/home/zafar/zafar-rtech/Images_Usman/img'+str(i)+'.jpg', frame)
-    #cv2.imshow("img1", frame)
-    #cv2.waitKey()
-    cv2.destroyAllWindows()
-    cam.release()
+    # cam = cv2.VideoCapture(0)
+    # retval, frame = cam.read()
+    # if retval != True:
+    #     raise ValueError("Can't read frame")
+    # cv2.imwrite('/home/zafar/pictures/img'+str(i)+'.jpg', frame)
+    # #cv2.imshow("img1", frame)
+    # #cv2.waitKey()
+    # cv2.destroyAllWindows()
+    # cam.release()
 
-    rospy.sleep(0.1)
+    # rospy.sleep(0.1)
     group.stop()
 

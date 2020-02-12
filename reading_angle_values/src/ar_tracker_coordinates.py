@@ -1,7 +1,7 @@
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 
-xfile = open('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/ar_tracker_pose.txt')
+xfile = open('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/Data_collection/ar_tracker_pose1.txt')
 lines = xfile.readline()
 counter = 3
 x = []
@@ -35,12 +35,13 @@ while lines:
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 # print(x)
-# ax.scatter(x, y, z, c='r', marker='o')
-ax.plot(x, y, z, c='r')
+ax.scatter(x, y, z, c='r', marker='o')
+# ax.plot(x, y, z, c='r')
 
 ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
 ax.set_zlabel('Z Label')
-
+# ax.set_xlim(-2, 2); ax.set_ylim(-2, 2); ax.set_zlim(-2, 2)
+plt.axis('equal')
 plt.show()
 

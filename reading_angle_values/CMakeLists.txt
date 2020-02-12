@@ -11,6 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -195,3 +196,6 @@ install(PROGRAMS
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+add_executable(tf2_listener src/tf2_listener.cpp)
+target_link_libraries(tf2_listener ${catkin_LIBRARIES})
+

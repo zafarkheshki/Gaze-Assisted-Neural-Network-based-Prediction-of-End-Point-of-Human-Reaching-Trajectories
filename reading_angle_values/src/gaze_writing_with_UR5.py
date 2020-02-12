@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+cd read#!/usr/bin/env python2
 import sys
 import copy
 import rospy
