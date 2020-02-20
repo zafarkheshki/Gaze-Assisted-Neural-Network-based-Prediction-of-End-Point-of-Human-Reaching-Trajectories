@@ -15,11 +15,11 @@ def AR_state_callback(msg):
             
         pos = msg.markers[0].pose.pose
         print(str(msg.markers[0].pose.pose))
-        writer.writerow([pos.position.x, pos.position.y, pos.position.z, pos.orientation.x, pos.orientation.y, pos.orientation.z, pos.orientation.w])
-        
+        # writer.writerow([pos.position.x, pos.position.y, pos.position.z, pos.orientation.x, pos.orientation.y, pos.orientation.z, pos.orientation.w])
+        writer.writerow([pos.position.x, pos.position.y, pos.position.z])
 
 if __name__ == "__main__":
-    f = open('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/ar_tracker_pose.csv', 'w')
+    f = open('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/ar_tracker_pose.csv', 'a+')
     writer= csv.writer(f, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
     rospy.init_node('pose_writing_ar_tracker', anonymous=True)
     print("hello I am in writer node")
