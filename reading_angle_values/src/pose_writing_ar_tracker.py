@@ -10,11 +10,12 @@ import csv
 
 global pos
 def AR_state_callback(msg):
-    with open('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/Data_collection/ar_tracker_pose20.txt', 'a+') as text_file:
+    with open('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/New_Data/AR_tracker_new/ar_tracker_pose329.txt', 'a+') as text_file:
 
         if len(msg.markers) > 0:
             print(msg.markers[0].pose.pose.position.x)
             print(str(msg.markers[0].pose.pose))
+
             text_file.write(str(msg.markers[0].pose.pose) + ' ')
             text_file.write('\n')
 

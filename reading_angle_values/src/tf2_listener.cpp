@@ -21,7 +21,7 @@ int main(int argc, char** argv){
   ros::Rate rate(10.0);
   std::ofstream myfile;
   std::vector<double> p;
-  myfile.open ("/home/zafar/catkin_ws/src/Thesis/reading_angle_values/Data_collection/end_effector_position_and_orientation3.txt", std::ios_base::app);
+  myfile.open ("/home/zafar/catkin_ws/src/Thesis/reading_angle_values/New_Data/End_eff_pos/end_effector.txt", std::ios_base::app);
   while (node.ok())
   {
     geometry_msgs::TransformStamped transformStamped;

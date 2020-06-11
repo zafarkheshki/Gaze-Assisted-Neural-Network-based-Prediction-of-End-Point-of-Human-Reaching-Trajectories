@@ -29,7 +29,7 @@ while True:
     var = int (input())
     while var < 5:
         var = 10
-        for i in range(5):
+        for i in range(1):
             #im1 = Image.open("img2.jpg")
             #time.sleep(0.01)
             cam = cv2.VideoCapture(1)
@@ -41,7 +41,7 @@ while True:
             img = cv2.resize(im1, (293, 293), interpolation = cv2.INTER_AREA)
             #im1 = im1.resize((293, 293), Image.BILINEAR)
             # image = im1
-            image = cv2.imwrite("/home/zafar/Deepgaze_images1/image"+str(i+counter)+".jpg", im1)
+            image = cv2.imwrite("/home/zafar/Deepgaze_images_new2/image"+str(i+counter)+".jpg", im1)
             sess = tf.Session() #Launch the graph in a session.
             my_head_pose_estimator = CnnHeadPoseEstimator(sess) #Head pose estimation object
             my_head_pose_estimator.load_pitch_variables("/home/zafar/deepgaze/etc/tensorflow/head_pose/pitch/cnn_cccdd_30k.tf")
@@ -56,7 +56,7 @@ while True:
             print("Estimated yaw ..... " + str(yaw[0,0,0]))
             print("Estimated roll ..... " + str(roll[0,0,0]))
                     
-            with open('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/Data_collection/gaze_record1.txt', 'a+') as text_file:
+            with open('/home/zafar/catkin_ws/src/Thesis/reading_angle_values/New_Data/gaze_record2.txt', 'a+') as text_file:
                 text_file.write(str(roll[0,0,0]) + '   '+str(pitch[0,0,0]) + '   '+str(yaw[0,0,0]))
                 text_file.write('\n')
             retval = True
