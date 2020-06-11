@@ -1,0 +1,15 @@
+roslaunch ur_robot_driver modified_ur5_bringup.launch robot_ip:=192.168.1.100
+
+roslaunch ur5_v2_moveit_config ur5_moveit_planning_execution.launch 
+
+roslaunch ur5_v2_moveit_config moveit_rviz.launch config:=true
+
+*********************************************************************
+
+roslaunch usb_cam test.launch 
+
+roslaunch ar_track_alvar test.launch 
+
+**** Launch node ****
+
+
